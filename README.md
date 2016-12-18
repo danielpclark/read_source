@@ -1,9 +1,10 @@
 # ReadSource
 
-Haha!  This little gem was a distraction from my duties but I had to make it.  At first I going to
-name it VIM-something because it lets you open a source code method in your VIM editor.  But as I
-thought about it I discovered it wouldbe so simple to have Ruby read the method for itself.  Yes I
-know there is the `method_source` gem that has been around forever. But if I'm writing a VIM method
+Haha! This little gem was a distraction from my duties but I had to make it.
+
+At first I was going to name it VIM-something because it lets you open the source code for a method in your VIM editor.
+But as I thought about it I discovered it would be so simple to have Ruby read the method for itself. *Yes
+I know there is the `method_source` gem that has been around forever.* But if I'm writing a VIM method
 to read the source file I might as well throw in a method to string function.
 
 ## Installation
@@ -50,9 +51,11 @@ puts Integer.method(:each_prime).read_source
 #end
 ```
 
-Instead of writing the `read_source` method on either the `Method` or `UnboundMethod` objects you
-can type the `vim` method and it will close irb (or rails console) and open the source code file
-in VIM at the exact line where the method is defined.
+You can type `vim` instead of the `read_source` method on either the `Method` or `UnboundMethod` objects
+and it will close irb (or rails console) and open the source code file in VIM at the exact line where
+the method is defined.
+
+--- 
 
 In case you didn't know Ruby already has a bunch of nice methods on `Method` and `UnboundMethod`
 that are quite helpful.
@@ -69,7 +72,11 @@ Pathname.instance_method(:root?).source_location
 # => ["/home/danielpclark/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/pathname.rb", 208]
 ```
 
-If the source code is written in C then the `read_source` and `vim` methods only return nil.
+---
+
+NOTES:
+* If the source code is written in C then the `read_source` and `vim` methods only return nil.
+* If the file is in `GEM_HOME` path then VIM opens it in read only mode.
 
 ## Development
 
