@@ -10,8 +10,7 @@ module ReadSource
   end
   module ReadSource
     def read_source
-      file, line_num = send :source_location
-      return unless file
+      (file, line_num = send :source_location) || return
       readlines = IO.readlines(file)
       source = readlines[line_num-1]
       indent = /\A[[:space:]]*/.match(source).to_s.length
