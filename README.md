@@ -86,7 +86,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/read_source.
+Bug reports and pull requests are welcome on GitHub at https://github.com/danielpclark/read_source.
 
 
 ## License
