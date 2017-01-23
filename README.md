@@ -91,9 +91,9 @@ NOTES:
 
 ## VIM
 
-We now support VIM servers and can open code directly into your existing VIM session.  If you've started
+We now support VIM servers and can open code directly into your existing VIM session(s).  If you've started
 a VIM server with the name of "VIM" then any time you call the `vim` method it will open in there **unless**
-you specify another servername as a parameter to `vim`.
+you choose to specify another servername as a parameter to `vim`.
 
 #### Start a VIM server with
 ```ruby
@@ -107,14 +107,14 @@ vim --servername SOMENAME
 Then to open the code in VIM you would do:
 
 ```ruby
-# If a server is named vim (or else it will close current Ruby session and open vim in this terminal).
+# If a server is named VIM (or else it will close current Ruby session and open vim in this terminal).
 Gem::BasicSpecification.instance_method(:base_dir=).vim
 
 # Using a named server
 Gem::BasicSpecification.instance_method(:base_dir=).vim 'SOMENAME'
 ```
 
-This way you can keep you ruby code running and open the code in an existing VIM instance.
+This way you can keep your ruby code running and open the code in an existing VIM instance.
 
 
 ## Development
