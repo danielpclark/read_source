@@ -89,6 +89,34 @@ NOTES:
 * If the source code is written in C then the `read_source` and `vim` methods only return nil.
 * If the file is in `GEM_HOME` path then VIM opens it in read only mode.
 
+## VIM
+
+We now support VIM servers and can open code directly into your existing VIM session.  If you've started
+a VIM server with the name of "VIM" then any time you call the `vim` method it will open in there **unless**
+you specify another servername as a parameter to `vim`.
+
+#### Start a VIM server with
+```ruby
+# A default server
+vim --servername VIM
+
+# An alternate server
+vim --servername SOMENAME
+```
+
+Then to open the code in VIM you would do:
+
+```ruby
+# If a server is named vim (or else it will close current Ruby session and open vim in this terminal).
+Gem::BasicSpecification.instance_method(:base_dir=).vim
+
+# Using a named server
+Gem::BasicSpecification.instance_method(:base_dir=).vim 'SOMENAME'
+```
+
+This way you can keep you ruby code running and open the code in an existing VIM instance.
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
