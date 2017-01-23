@@ -26,4 +26,13 @@ class ReadSourceTest < Minitest::Test
     refute Example.instance_method(:f).attr?
     refute Example.instance_method(:f=).attr?
   end
+
+  def test_attr_returns_nil_on_method
+    refute Example.instance_method(:apple).attr?
+  end
+
+  def test_read_source_doesnt_read_past_attr
+    assert_equal Example.instance_method(:a).read_source,
+      "attr :a\n"
+  end
 end

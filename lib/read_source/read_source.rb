@@ -6,6 +6,7 @@ module ReadSource
       source = readlines[line_num-1]
       indent = /\A[[:space:]]*/.match(source).to_s.length
       source = source[indent..-1]
+      return source if source =~ /(attr[\w]*)/
       readlines[line_num..-1].each do |line|
         source += line[indent..-1]
         if indent == /\A[[:space:]]*/.match(line).to_s.length
