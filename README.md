@@ -28,8 +28,10 @@ Or install it yourself as:
 This gem adds instance methods to the Method and UnboundMethod objects.
 
 * `Method#vim`
+* `Method#attr?`
 * `Method#read_source`
 * `UnboundMethod#vim`
+* `UnboundMethod#attr?`
 * `UnboundMethod#read_source`
 
 Currently this assumes VIM is in your executable path.  Future versions of this gem will be more
@@ -44,11 +46,17 @@ puts Pathname.instance_method(:root?).read_source
 #  !!(chop_basename(@path) == nil && /#{SEPARATOR_PAT}/o =~ @path)
 #end
 
+Pathname.instance_method(:root?).attr?
+# => nil
+
 require 'prime'
 puts Integer.method(:each_prime).read_source
 #def Integer.each_prime(ubound, &block) # :yields: prime
 #  Prime.each(ubound, &block)
 #end
+
+Gem::BasicSpecification.instance_method(:base_dir=).attr?
+# => :attr_writer
 ```
 
 You can type `vim` instead of the `read_source` method on either the `Method` or `UnboundMethod` objects
