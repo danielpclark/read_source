@@ -1,4 +1,7 @@
 # ReadSource
+[![Gem Version](https://badge.fury.io/rb/read_source.svg)](https://badge.fury.io/rb/read_source)
+[![Build Status](https://travis-ci.org/danielpclark/read_source.svg?branch=master)](https://travis-ci.org/danielpclark/read_source)
+[![SayThanks.io](https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg)](https://saythanks.io/to/danielpclark)
 
 Haha! This little gem was a distraction from my duties but I had to make it.
 
