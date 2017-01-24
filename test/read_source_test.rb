@@ -13,7 +13,17 @@ end
 
 AlsoAttrMethodName = %Q{define_method :also_attr_method_name { "asdf" }\n}
 
+class SameFile
+  attr_writer :a
+end
+
+
 class ReadSourceTest < Minitest::Test
+  def test_it_gets_attr_from_same_file
+    assert_equal :attr_writer,
+      SameFile.instance_method(:a=).attr?
+  end
+
   def test_it_reads_source
     assert_equal Apple,
       Example.instance_method(:apple).read_source

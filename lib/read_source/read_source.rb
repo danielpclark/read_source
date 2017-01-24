@@ -3,6 +3,11 @@ module ReadSource
     def read_source
       (file, line_num = send :source_location) || return
 
+      if file == "(irb)"
+        warn "This feature doesn't work for code written in IRB!"
+        return
+      end
+
       is_inline_method = ->str{
         defs = str.scan(/def(?:\b|ine_method.*do)/).count
         ends = str.scan(/end/).count
@@ -25,6 +30,12 @@ module ReadSource
 
     def attr?
       (file, line_num = send :source_location) || return
+
+      if file == "(irb)"
+        warn "This feature doesn't work for code written in IRB!"
+        return
+      end
+
       def_header = IO.readlines(file)[line_num-1]
       return unless def_header =~ /\A[[:space:]]*attr[\w]*/
       def_header[/attr[\w]*/].to_sym rescue nil
