@@ -15,6 +15,13 @@ AlsoAttrMethodName = %Q{define_method :also_attr_method_name { "asdf" }\n}
 
 class SameFile
   attr_writer :a
+  attr_name = :attr_thingy
+  define_method("#{attr_name}=") do |value|
+    ivar = "@#{attr_name.to_s}"
+    tell_si ivar, instance_variable_get(ivar), value 
+
+    instance_variable_set(ivar, value)
+  end
 end
 
 
@@ -64,5 +71,10 @@ class ReadSourceTest < Minitest::Test
       %Q{def inline_method; "asdf" end\n}
     assert_equal Example.instance_method(:also_attr_method_name).read_source,
       %Q{define_method :also_attr_method_name { "asdf" }\n}
+  end
+
+  def test_it_handles_special_define_method_attr
+    refute SameFile.instance_method(:attr_thingy=).attr?
+    assert SameFile.instance_method(:attr_thingy=).read_source
   end
 end

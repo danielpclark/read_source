@@ -21,7 +21,8 @@ module ReadSource
       source = source[indent..-1]
       return source if source.=~(/\A[[:space:]]*attr[\w]*/) || is_inline_method.(source)
       readlines[line_num..-1].each do |line|
-        source += line[indent..-1]
+        add_line = line =~ /\A[[:space:]]*\n\z/ ? "\n" : line[indent..-1]
+        source += add_line
         if indent == /\A[[:space:]]*/.match(line).to_s.length
           break source
         end
