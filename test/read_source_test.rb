@@ -11,7 +11,7 @@ AttrMethodName = %Q{def attr_method_name
 end
 }
 
-AlsoAttrMethodName = %Q{define_method :also_attr_method_name { "asdf" }\n}
+AlsoAttrMethodName = %Q{define_method(:also_attr_method_name){ "asdf" }\n}
 
 class SameFile
   attr_writer :a
@@ -70,7 +70,7 @@ class ReadSourceTest < Minitest::Test
     assert_equal Example.instance_method(:inline_method).read_source,
       %Q{def inline_method; "asdf" end\n}
     assert_equal Example.instance_method(:also_attr_method_name).read_source,
-      %Q{define_method :also_attr_method_name { "asdf" }\n}
+      %Q{define_method(:also_attr_method_name){ "asdf" }\n}
   end
 
   def test_it_handles_special_define_method_attr

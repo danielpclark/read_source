@@ -15,7 +15,7 @@ class Example
     "asdf"
   end
 
-  define_method :also_attr_method_name { "asdf" }
+  define_method(:also_attr_method_name){ "asdf" }
 
   define_method(:attr_again) do
     "asdf"
